@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  </head>
+
+  <body>
+    <script type="text/turtle">
+      PREFIX po: <https://nielspraet.github.io/kg-photontology#>
+      PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+      PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+      PREFIX owl: <http://www.w3.org/2002/07/owl#>
+      PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+      <https://nielspraet.github.io/kg-photontology#> a owl:Ontology.
+
+      po:Photo a rdfs:Class;
+      		 rdfs:label "Photo"@en, "Foto"@nl;
+      		 rdfs:comment "The class describing digital photographs";
+               rdfs:subClassOf foaf:Image;
+      		 rdfs:isDefinedBy <https://nielspraet.github.io/kg-photontology#>.
+
+      po:Person a rdfs:Class;
+      		  rdfs:label "Person"@en, "Persoon"@nl;
+                rdfs:comment "The class describing a real or fictional person";
+                owl:sameAs foaf:Person;
+      		  rdfs:isDefinedBy <https://nielspraet.github.io/kg-photontology#>.
+
+      po:name a owl:DataTypeProperty;
+      	     rdfs:label "Name"@en, "Naam"@nl;
+      		 rdfs:comment "The property describing the name of a person";
+               rdfs:domain po:Person;
+               owl:sameAs foaf:name;
+      		 rdfs:isDefinedBy <https://nielspraet.github.io/kg-photontology#>.
+
+      po:title a owl:DataTypeProperty;
+      	     rdfs:label "Title"@en, "Titel"@nl;
+      		 rdfs:comment "The property describing the title of a picture";
+               rdfs:domain po:Photo;
+      		 rdfs:isDefinedBy <https://nielspraet.github.io/kg-photontology#>.
+
+      po:author a owl:ObjectProperty;
+      	     rdfs:label "Author"@en, "Auteur"@nl;
+      		 rdfs:comment "The property describing the person that took this picture";
+               rdfs:subPropertyOf foaf:maker;
+      		 rdfs:domain po:Photo;
+      		 rdfs:range po:Person;
+      		 rdfs:isDefinedBy <https://nielspraet.github.io/kg-photontology#>.
+
+      po:depicts a owl:ObjectProperty;
+      		rdfs:label "Depicted Entity"@en, "Getoonde Entiteit"@nl;
+              rdfs:comment "The property describing which people are depicted on a picture";
+              rdfs:domain po:Photo;
+              owl:sameAs foaf:depics;
+      		rdfs:isDefinedBy <https://nielspraet.github.io/kg-photontology#>.
+    </script>
+  </body>
+</html>
